@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/Debug/vscode_g030_fan.elf",
+            "name": "Debug with OpenOCD",
+            "preLaunchTask": "Build Debug firmware",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/stm32g0x.cfg"
+            ],
+            "serverpath": "${env:OPENOCD_HOME}/bin/openocd.exe",
+            "searchDir": [
+                "${env:OPENOCD_HOME}/share/openocd/scripts"
+            ],
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "gdbPath": "${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gdb.exe"
+        }
+    ]
+}

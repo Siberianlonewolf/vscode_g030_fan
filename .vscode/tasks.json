@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure Debug firmware",
+            "type": "process",
+            "command": "${env:CUBE_BUNDLE_PATH}/cmake/4.0.1+st.3/bin/cmake.exe",
+            "args": [
+                "--preset",
+                "Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:CUBE_BUNDLE_PATH}/cmake/4.0.1+st.3/bin;${env:CUBE_BUNDLE_PATH}/ninja/1.13.1+st.1/bin;${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin;${env:PATH}"
+                }
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Debug firmware",
+            "type": "process",
+            "command": "${env:CUBE_BUNDLE_PATH}/cmake/4.0.1+st.3/bin/cmake.exe",
+            "args": [
+                "--build",
+                "--preset",
+                "Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:CUBE_BUNDLE_PATH}/cmake/4.0.1+st.3/bin;${env:CUBE_BUNDLE_PATH}/ninja/1.13.1+st.1/bin;${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin;${env:PATH}"
+                }
+            },
+            "dependsOn": "Configure Debug firmware",
+            "dependsOrder": "sequence",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": false
+            }
+        }
+    ]
+}
